@@ -6,6 +6,7 @@ The executable, once invoked, asks the user for a prompt, and then relays that p
 
 To build this project:
 
+export OPENAI_API_KEY="put your key here inside these quotes"
 chmod 744 build.sh
 ./build.sh
 
