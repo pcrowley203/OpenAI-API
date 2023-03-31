@@ -6,8 +6,6 @@
 
 #define KEY "OPENAI_API_KEY"
 
-#undef BUFFLEN
-#define BUFFLEN 256
 
 using namespace std;
 
@@ -25,7 +23,7 @@ int main(){
 	
 	while (true){
 		
-		cout << "Give me a prompt, please.  (Type \"exit\" to exit.)" << endl << endl;
+		cout << endl << "Give me a prompt, please.  (Type \"exit\" to exit.)" << endl << endl;
 		string prompt;
 		getline(cin, prompt);
 		if (prompt == "exit") break;
@@ -34,9 +32,9 @@ int main(){
 		string response = thisOpenAi.GetResponse();
 		
 		Translator thisTranslator;
-		thisTranslator.SetInputString(response.c_str());
+		thisTranslator.SetInputString(response);
 		thisTranslator.Translate();
-		string responseText = string(thisTranslator.GetOutputString());
+		string responseText = thisTranslator.GetOutputString();
 		
 		cout << responseText << endl << endl << endl;
 	}

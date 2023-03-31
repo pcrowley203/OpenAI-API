@@ -1,14 +1,11 @@
 #include <cstring>
-#include <cstdio>
-#include <json/json.h>
+include <json/json.h>
 #include <json/reader.h>
 #include <json/value.h>
 
 
 #include "classTranslator.h"
 
-#undef BUFFLEN
-#define BUFFLEN 1024
 
 
 using namespace Json;
@@ -19,14 +16,14 @@ Translator::Translator(){}
 Translator::~Translator(){}
 
 
-void Translator::SetInputString(const char* iS){
+void Translator::SetInputString(string iS){
 	
-	strcpy(inputString, iS);
-	strcpy(outputString, "\0");
+	inputString = iS;
+	outputString = "";
 }
 
 
-char* Translator::GetOutputString(){
+string Translator::GetOutputString(){
 	
 	return outputString;
 }
@@ -37,9 +34,9 @@ void Translator::Translate(){
 	Value thisJsonValue;
 	Reader thisJsonReader;
 	
-	thisJsonReader.parse(string(inputString), thisJsonValue, true);
+	thisJsonReader.parse(inputString, thisJsonValue, true);
 	
-	sprintf(outputString, "%s", thisJsonValue["choices"][0]["text"].asString().c_str());
+	outputString = thisJsonValue["choices"][0]["text"].asString();
 }
 	
 	

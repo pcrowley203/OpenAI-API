@@ -1,9 +1,7 @@
 #ifndef __CLASS_OPENAI__
 #define __CLASS_OPENAI__
 
-
-#undef BUFFLEN_LONG
-#define BUFFLEN_LONG 4096
+#include <cstring>
 
 
 using namespace std;
@@ -39,8 +37,8 @@ class OpenAi {
 		int maximumNumberOfTokens;
 		int temperature;
 
-		char payLoad[BUFFLEN_LONG];
-		char response[BUFFLEN_LONG];
+		string payLoad;
+		string response;
 };
 
 

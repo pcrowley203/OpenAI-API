@@ -1,8 +1,7 @@
 #ifndef __TRANSLATOR__
 #define __TRANSLATOR__
 
-#undef BUFFLENLONG
-#define BUFFLENLONG 131072
+#include <cstring>
 
 
 class Translator{
@@ -12,15 +11,15 @@ class Translator{
 		Translator();
 		~Translator();
 		
-		void SetInputString(const char* iS);
-		char* GetOutputString();
+		void SetInputString(string iS);
+		string GetOutputString();
 		
 		void Translate();
 		
 	private:
 		
-		char inputString[BUFFLENLONG];
-		char outputString[BUFFLENLONG];
+		string inputString;
+		string outputString;
 	
 };
 
