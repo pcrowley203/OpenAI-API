@@ -3,6 +3,7 @@
 
 #include "classOpenAi.h"
 #include "classTranslator.h"
+#include "classHttp.cpp"
 
 #define KEY "OPENAI_API_KEY"
 
@@ -19,7 +20,7 @@ int main(){
 	
 	string privateKey = getenv(KEY);
 	
-	OpenAi thisOpenAi(endPoint, privateKey, model, maximumNumberOfTokens, temperature);
+	Http thisHttp(endPoint, privateKey);
 	
 	while (true){
 		
@@ -28,8 +29,12 @@ int main(){
 		getline(cin, prompt);
 		if (prompt == "exit") break;
 		
-		thisOpenAi.SendARequest(prompt);
-		string response = thisOpenAi.GetResponse();
+		OpenAi thisOpenAi(prompt, model, maximumNumberOfTokens, temperature);
+		thisOpenAi.CreateOutboundMessagePayload();
+		string payLoad = thisOpenAi.GetOutboundMessagePayload();
+	
+		thisHttp.SendRequestAndReceiveResponse(payLoad);
+		string response = thisHttp.GetResponse();
 		
 		Translator thisTranslator;
 		thisTranslator.SetInputString(response);

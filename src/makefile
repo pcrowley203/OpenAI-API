@@ -19,7 +19,8 @@ $(TARGET): $(OBJ) $(HEADER)
 
 $(OBJECT)proofOfConcept.o: $(SOURCE)proofOfConcept.cpp \
 $(SOURCE)classOpenAi.h \
-$(SOURCE)classTranslator.h
+$(SOURCE)classTranslator.h \
+$(SOURCE)classHttp.h 
 	$(COMPILER) $(CFLAGS) -c $(SOURCE)proofOfConcept.cpp
 	mv -f $(@F) $@ 
 
@@ -31,5 +32,11 @@ $(SOURCE)classOpenAi.h
 $(OBJECT)classTranslator.o: $(SOURCE)classTranslator.cpp \
 $(SOURCE)classTranslator.h
 	$(COMPILER) $(CFLAGS) -c $(SOURCE)classTranslator.cpp
+	mv -f $(@F) $@ 
+
+
+$(OBJECT)classHttp.o: $(SOURCE)classHttp.cpp \
+$(SOURCE)classHttp.h
+	$(COMPILER) $(CFLAGS) -c $(SOURCE)classHttp.cpp
 	mv -f $(@F) $@ 
 

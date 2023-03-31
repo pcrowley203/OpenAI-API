@@ -1,8 +1,10 @@
 #ifndef __TRANSLATOR__
 #define __TRANSLATOR__
 
-#include <cstring>
+#include <string>
 
+
+using namespace std;
 
 class Translator{
 	
